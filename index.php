@@ -58,29 +58,6 @@ foreach($data as $QnA => $arrQnA){            //cerco i subarray domanda-rispost
     $question = $arrQnA["question"];            //prendo i contenuti per singola chiave     
     $answer = $arrQnA["answer"];
 ?>
-<!--
-   if(is_array($answer)){                            //primo livello sottoliste  (se stringa:stampa, se no:cicla)
-        foreach($answer as $list){
-
-          if(is_array($list)){                        //secondo livello sottoliste
-            foreach($list as $listcont){   
-                
-                if(is_array($listcont)){                       //terzo livello sottoliste
-                    foreach($listcont as $sublist){
-                        echo "<br> n ".$sublist . "<br>";
-                    }
-                 }else{
-                
-                    echo  "<br> ° ".$listcont . "<br>";
-                 }
-            }     
-          }else echo $list . "<br>";
-        }
-
-    }else{
-        echo $answer . "<br><br><br><br>";
-        }-->
-
 
 
 <!DOCTYPE html>
@@ -89,50 +66,64 @@ foreach($data as $QnA => $arrQnA){            //cerco i subarray domanda-rispost
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./stylesheets/style.css">
     <title>Google form</title>
 </head>
 <body>
 
-    <h2><?php echo $question ?></h2>
+    <h3><?php echo $question ?></h3>
 
     <?php
        if(is_array($answer)){                            
-        foreach($answer as $list){
+        foreach($answer as $subAnswer){
 
-          if(is_array($list)){                       
-            foreach($list as $sublist){   
-                
-                if(is_array($sublist)){                       
+          if(is_array($subAnswer)){                       
+            foreach($subAnswer as $sublist){  
+              
+                if(is_array($sublist)){ 
+
+                    ?>
+                    <ul class="sublist"> 
+                    <?php  
+
                     foreach($sublist as $sublist_2){
 
                         ?>
-                            <ul>
-                             <li> <?php echo "°  ". $sublist_2 ?> </li>
-                            </ul>                      
+                          <li> <?php echo $sublist_2 ?> </li>                                         
                         <?php
                     }
                 }else{
                     ?>
                         <ul>
                           <li> <?php echo $sublist?> </li>
-                        </ul> 
-                
-                    
+                        </ul>        
                     <?php
                 }
-            }     
-          }else echo $list . "<br>";
+
+                    ?> </ul> <?php  //chiusura ul
+            }  
+          }else{
+               ?>
+
+                 <p> <?php echo $subAnswer ?> </p>  
+
+                <?php
+            }
         }
 
     }else{
-        echo $answer . "<br><br><br><br>";}
+        ?>
+
+           <p> <?php echo $answer ?> </p>     
+                 
+        <?php
+        }
+    }
     ?>
-    
- 
 
 </body>
-
-<?php } ?>
 </html>
 
 

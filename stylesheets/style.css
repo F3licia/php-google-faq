@@ -1,0 +1,21 @@
+*{
+ 
+}
+
+h3{ 
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 32px;
+    font-size: 24px;
+    color: #3c4043}
+
+p, li, a{
+    font-family: Arial, Helvetica, sans-serif;
+    font-family: roboto;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.sublist{
+    list-style-type: lower-alpha;
+    border: 1px solid pink;
+}
