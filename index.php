@@ -25,33 +25,68 @@ $data =[
     ],
     [
     "question" => "Perché il mio account è associato a un paese?",
-    "answer" => "Il tuo account è associato a un paese (o territorio) nei Termini di servizio per poter stabilire due cose:
-                La società consociata Google che offre i servizi, tratta le tue informazioni ed è responsabile del rispetto
-                delle leggi sulla privacy vigenti. Generalmente Google offre i propri servizi per i consumatori tramite una
-                delle due società seguenti:
-                Google Ireland he regola il nostro rapporto, che può variare in base alle leggi locali.
-                Tieni presente che i serviLimited, se gli utenti sono residenti nello Spazio economico europeo
-                (paesi dell'Unione europea, oltre a Islanda, Liechtenstein e Norvegia) o in Svizzera.
-                Google LLC, con sede negli Stati Uniti, per il resto del mondo.
-                La versione dei termini czi Google sono fondamentalmente gli stessi a prescindere dalla società consociata che
-                li offre o dal paese a cui è associato il tuo account.",
-    ]
+    "answer" => ["Il tuo account è associato a un paese (o territorio) nei Termini di servizio per poter stabilire due cose:",
+    
+                "La società consociata Google che offre i servizi,
+                tratta le tue informazioni ed è responsabile del rispetto
+                delle leggi sulla privacy vigenti. Generalmente Google
+                offre i propri servizi per i consumatori tramite una
+                delle due società seguenti:",
+
+                "Tieni presente che i servizi Google sono fondamentalmente gli stessi a prescindere dalla società consociata che li offre o dal paese a cui è associato il tuo account."]
+
+    ],        
 ];
 
 foreach($data as $QnA => $arrQnA){            //cerco i subarray domanda-risposta
 
-      $inxQ =  array_key_first($arrQnA);    //prendo la prima chiave e l'ultima
-      $inxA =  array_key_last($arrQnA);
-
-      $question = $arrQnA[$inxQ];             //prendo i valori per chiavi singole
-      $answer = $arrQnA[$inxA];
+    $question = $arrQnA["question"];            //prendo i contenuti per singola chiave     
+    $answer = $arrQnA["answer"];
 ?>
-    <h2> <?php echo $question  ?> </h2>
-    <p> <?php echo $answer ?> </p>
 
-<?php     
-  
-}
-?>
+<!--    if(is_array($answer)){                            //se la risposta ha delle sottoliste, le stampo diversamente    
+        foreach($answer as $sub => $sublist){
+          echo "<br>° " . $sublist ;
+        }
+
+    }else{
+        echo $answer . "<br>";
+        }
+
+}-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google form</title>
+</head>
+<body>
+
+    <h2><?php echo $question ?></h2>
+    
+
+
+
+
+</body>
+
+<?php } ?>
+</html>
+
+
+
+
+
+
+
+
+
+
+
 
 
