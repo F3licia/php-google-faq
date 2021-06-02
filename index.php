@@ -25,7 +25,7 @@ $data =[
     ],
     [
     "question" => "Perché il mio account è associato a un paese?",
-    "answer" => ["Il tuo account è associato a un paese (o territorio) nei Termini di servizio per poter stabilire due cose:",
+    "answer" => [ "Il tuo account è associato a un paese (o territorio) nei Termini di servizio per poter stabilire due cose:",
     
                 ["La società consociata Google che offre i servizi,
                 tratta le tue informazioni ed è responsabile del rispetto
@@ -57,8 +57,8 @@ foreach($data as $QnA => $arrQnA){            //cerco i subarray domanda-rispost
 
     $question = $arrQnA["question"];            //prendo i contenuti per singola chiave     
     $answer = $arrQnA["answer"];
-
-
+?>
+<!--
    if(is_array($answer)){                            //primo livello sottoliste  (se stringa:stampa, se no:cicla)
         foreach($answer as $list){
 
@@ -79,10 +79,8 @@ foreach($data as $QnA => $arrQnA){            //cerco i subarray domanda-rispost
 
     }else{
         echo $answer . "<br><br><br><br>";
-        }
+        }-->
 
-
-?>
 
 
 <!DOCTYPE html>
@@ -95,16 +93,46 @@ foreach($data as $QnA => $arrQnA){            //cerco i subarray domanda-rispost
 </head>
 <body>
 
+    <h2><?php echo $question ?></h2>
 
+    <?php
+       if(is_array($answer)){                            
+        foreach($answer as $list){
 
+          if(is_array($list)){                       
+            foreach($list as $sublist){   
+                
+                if(is_array($sublist)){                       
+                    foreach($sublist as $sublist_2){
+
+                        ?>
+                            <ul>
+                             <li> <?php echo "°  ". $sublist_2 ?> </li>
+                            </ul>                      
+                        <?php
+                    }
+                }else{
+                    ?>
+                        <ul>
+                          <li> <?php echo $sublist?> </li>
+                        </ul> 
+                
+                    
+                    <?php
+                }
+            }     
+          }else echo $list . "<br>";
+        }
+
+    }else{
+        echo $answer . "<br><br><br><br>";}
+    ?>
+    
  
 
 </body>
 
-<?php } 
-
-
-?>
+<?php } ?>
 </html>
 
 
