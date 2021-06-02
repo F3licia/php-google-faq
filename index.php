@@ -59,13 +59,13 @@ foreach($data as $QnA => $arrQnA){            //cerco i subarray domanda-rispost
     $answer = $arrQnA["answer"];
 
 
-   if(is_array($answer)){                            //primo livello sottoliste  
-        foreach($answer as $sub => $list){
+   if(is_array($answer)){                            //primo livello sottoliste  (se stringa:stampa, se no:cicla)
+        foreach($answer as $list){
 
-          if(is_array($list)){                        
+          if(is_array($list)){                        //secondo livello sottoliste
             foreach($list as $listcont){   
                 
-                if(is_array($listcont)){                       //terzo livello
+                if(is_array($listcont)){                       //terzo livello sottoliste
                     foreach($listcont as $sublist){
                         echo "<br> n ".$sublist . "<br>";
                     }
