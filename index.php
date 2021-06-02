@@ -27,11 +27,17 @@ $data =[
     "question" => "Perché il mio account è associato a un paese?",
     "answer" => ["Il tuo account è associato a un paese (o territorio) nei Termini di servizio per poter stabilire due cose:",
     
-                "La società consociata Google che offre i servizi,
+                ["sublist" =>"La società consociata Google che offre i servizi,
                 tratta le tue informazioni ed è responsabile del rispetto
                 delle leggi sulla privacy vigenti. Generalmente Google
                 offre i propri servizi per i consumatori tramite una
                 delle due società seguenti:",
+                "La versione dei termini che regola il nostro rapporto, che
+                può variare in base alle leggi locali.
+                Tieni presente che i servizi Google sono fondamentalmente
+                gli stessi a prescindere dalla società consociata che li offre
+                o dal paese a cui è associato il tuo account."
+            ],
 
                 "Tieni presente che i servizi Google sono fondamentalmente gli stessi a prescindere dalla società consociata che li offre o dal paese a cui è associato il tuo account."]
 
@@ -42,19 +48,24 @@ foreach($data as $QnA => $arrQnA){            //cerco i subarray domanda-rispost
 
     $question = $arrQnA["question"];            //prendo i contenuti per singola chiave     
     $answer = $arrQnA["answer"];
-?>
 
-<!--    if(is_array($answer)){                            //se la risposta ha delle sottoliste, le stampo diversamente    
-        foreach($answer as $sub => $sublist){
-          echo "<br>° " . $sublist ;
+
+   if(is_array($answer)){                            //se la risposta ha delle sottoliste, le stampo diversamente    
+        foreach($answer as $sub => $list){
+          if(is_array($list)){                        
+            foreach($list as $listcont){
+                echo  "<br> ° ".$listcont . "<br>";
+            }
+      
+          }else echo $list . "<br>";
         }
 
     }else{
-        echo $answer . "<br>";
+        echo $answer . "<br><br><br><br>";
         }
 
-}-->
 
+?>
 
 
 <!DOCTYPE html>
@@ -67,26 +78,16 @@ foreach($data as $QnA => $arrQnA){            //cerco i subarray domanda-rispost
 </head>
 <body>
 
-    <h2><?php echo $question ?></h2>
 
-    <?php
-    if(is_array($answer)){                            
-        foreach($answer as $sub => $sublist){ ?>
-     <ul>
-     <li>
-     <?php echo $sublist ?>
-     </li>
-     </ul>
-     <?php   }
 
-    }else{
-        echo $answer . "<br>";
-        }
-    ?>
+ 
 
 </body>
 
-<?php } ?>
+<?php } 
+
+
+?>
 </html>
 
 
