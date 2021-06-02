@@ -27,11 +27,20 @@ $data =[
     "question" => "Perché il mio account è associato a un paese?",
     "answer" => ["Il tuo account è associato a un paese (o territorio) nei Termini di servizio per poter stabilire due cose:",
     
-                ["sublist" =>"La società consociata Google che offre i servizi,
+                ["La società consociata Google che offre i servizi,
                 tratta le tue informazioni ed è responsabile del rispetto
                 delle leggi sulla privacy vigenti. Generalmente Google
                 offre i propri servizi per i consumatori tramite una
                 delle due società seguenti:",
+
+                    ["Google Ireland Limited, se gli utenti
+                    sono residenti nello Spazio economico europeo
+                    (paesi dell'Unione europea, oltre a Islanda,
+                    Liechtenstein e Norvegia) o in Svizzera.",
+                    "Google LLC, con sede negli Stati Uniti,
+                    per il resto del mondo."]
+                               
+                ,
                 "La versione dei termini che regola il nostro rapporto, che
                 può variare in base alle leggi locali.
                 Tieni presente che i servizi Google sono fondamentalmente
@@ -50,13 +59,21 @@ foreach($data as $QnA => $arrQnA){            //cerco i subarray domanda-rispost
     $answer = $arrQnA["answer"];
 
 
-   if(is_array($answer)){                            //se la risposta ha delle sottoliste, le stampo diversamente    
+   if(is_array($answer)){                            //primo livello sottoliste  
         foreach($answer as $sub => $list){
+
           if(is_array($list)){                        
-            foreach($list as $listcont){
-                echo  "<br> ° ".$listcont . "<br>";
-            }
-      
+            foreach($list as $listcont){   
+                
+                if(is_array($listcont)){                       //terzo livello
+                    foreach($listcont as $sublist){
+                        echo "<br> n ".$sublist . "<br>";
+                    }
+                 }else{
+                
+                    echo  "<br> ° ".$listcont . "<br>";
+                 }
+            }     
           }else echo $list . "<br>";
         }
 
