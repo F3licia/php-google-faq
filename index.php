@@ -16,8 +16,8 @@ foreach($data as $QnA => $arrQnA){            //cerco i subarray domanda-rispost
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="./stylesheets/style.css?v=<?php echo time(); ?>"> <!--?-->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./stylesheets/style.css">
     <title>Google form</title>
 </head>
 <body>
@@ -29,7 +29,20 @@ foreach($data as $QnA => $arrQnA){            //cerco i subarray domanda-rispost
                                
         foreach($answer as $subAnswer){
             
-            if(is_array($subAnswer)){                              //di nuovo 
+            if(is_array($subAnswer)){ 
+
+                /////////
+                
+                if(array_key_exists('link', $subAnswer)){      //se esiste un tag link 
+                    foreach($subAnswer as $link){
+
+                     ?> <a href="#"> <?php echo $link ?> </a> <?php   
+
+                    }
+                }else{
+                ///////////
+                
+        
                 ?>
                 <ul class="list"> <!--apertura primo ul-->
                 <?php 
@@ -50,16 +63,17 @@ foreach($data as $QnA => $arrQnA){            //cerco i subarray domanda-rispost
                         }
 
                         ?> </ul> <?php  //chiusura secondo ul 
-                    }else{
+
+                    } else if (is_string( $sublist )){
                         ?>
                         
                           <li> <?php echo $sublist?> </li>
                                 
                         <?php
                     }    
-                } 
+                }  ?> </ul> <?php //chiusura primo ul 
                 
-                ?> </ul> <?php //chiusura primo ul 
+               }
             }      
             else{
                 ?>

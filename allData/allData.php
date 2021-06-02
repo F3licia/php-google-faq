@@ -4,7 +4,7 @@ return [
     [
     "question" => "Come state implementando la recente decisione della Corte di giustizia dell'Unione europea
                    (CGUE) relativa al diritto all'oblio?",
-    "answer" => ["La recente decisione della Corte di giustizia dell'Unione europea ha profonde conseguenze per i motori di ricerca in Europa. La Corte ha stabilito
+    "answer" => ["La recente", ["link"=>"decisione della Corte di giustizia dell'Unione europea"], "ha profonde conseguenze per i motori di ricerca in Europa. La Corte ha stabilito
                  che alcuni utenti hanno il diritto di chiedere ai motori di ricerca come Google di rimuovere risultati relativi a chiavi di ricerca che includono il proprio nome.
                  poter essere rimossi, i risultati visualizzati devono essere inadeguati, irrilevanti o non più rilevanti, o eccessivi.",
 
@@ -12,7 +12,7 @@ return [
                  complessa perché dobbiamo valutare ogni singola richiesta e effettuare un bilanciamento tra il diritto dell'individuo a controllare i suoi dati personali
                  ed il diritto di tutti di conoscere e distribuire le informazioni.",
 
-                 "Per presentare una richiesta di rimozione, compila questo modulo web. Riceverai una risposta automatica che conferma la ricezione della tua richiesta.
+                 "Per presentare una richiesta di rimozione, compila questo", ["link"=>"modulo web."],"Riceverai una risposta automatica che conferma la ricezione della tua richiesta.
                  Dopodiché valuteremo il tuo caso (tieni presente che potrebbe occorrere un po' di tempo perché abbiamo già ricevuto tante richieste simili). Nel valutare
                  la richiesta, considereremo se i risultati includono informazioni obsolete relative alla tua vita privata. Considereremo inoltre se vi è un interesse pubblico
                  a che le informazioni rimangano nei nostri risultati delle ricerche, ad esempio se riguardano frodi finanziarie, negligenza professionale, condanne penali o la
