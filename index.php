@@ -31,7 +31,7 @@ foreach($data as $QnA => $arrQnA){            //cerco i subarray domanda-rispost
             
             if(is_array($subAnswer)){ 
 
-                /////////
+               
                 
                 if(array_key_exists('link', $subAnswer)){      //se esiste un tag link 
                     foreach($subAnswer as $link){
@@ -40,38 +40,37 @@ foreach($data as $QnA => $arrQnA){            //cerco i subarray domanda-rispost
 
                     }
                 }else{
-                ///////////
-                
-        
-                ?>
-                <ul class="list"> <!--apertura primo ul-->
-                <?php 
-                 
-                foreach($subAnswer as $sublist){  
-                  
-                    if(is_array($sublist)){                           //di nuovo 
+               
 
-                        ?>
-                        <ul class="sublist"> <!--apertura secondo ul-->
-                        <?php  
-
-                        foreach($sublist as $sublist_2){
+                    ?>
+                    <ul class="list"> <!--apertura primo ul-->
+                    <?php 
+                    
+                    foreach($subAnswer as $sublist){  
+                    
+                        if(is_array($sublist)){                           
 
                             ?>
-                               <li> <?php echo $sublist_2 ?> </li>                                         
+                            <ul class="sublist"> <!--apertura secondo ul-->
+                            <?php  
+
+                            foreach($sublist as $sublist_2){
+
+                                ?>
+                                <li> <?php echo $sublist_2 ?> </li>                                         
+                                <?php
+                            }
+
+                            ?> </ul> <?php  //chiusura secondo ul 
+
+                        } else if (is_string( $sublist )){
+                            ?>
+                            
+                            <li> <?php echo $sublist?> </li>
+                                    
                             <?php
-                        }
-
-                        ?> </ul> <?php  //chiusura secondo ul 
-
-                    } else if (is_string( $sublist )){
-                        ?>
-                        
-                          <li> <?php echo $sublist?> </li>
-                                
-                        <?php
-                    }    
-                }  ?> </ul> <?php //chiusura primo ul 
+                        }    
+                    }  ?> </ul> <?php //chiusura primo ul 
                 
                }
             }      
