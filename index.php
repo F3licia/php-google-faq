@@ -68,10 +68,21 @@ foreach($data as $QnA => $arrQnA){            //cerco i subarray domanda-rispost
 <body>
 
     <h2><?php echo $question ?></h2>
-    
 
+    <?php
+    if(is_array($answer)){                            
+        foreach($answer as $sub => $sublist){ ?>
+     <ul>
+     <li>
+     <?php echo $sublist ?>
+     </li>
+     </ul>
+     <?php   }
 
-
+    }else{
+        echo $answer . "<br>";
+        }
+    ?>
 
 </body>
 
