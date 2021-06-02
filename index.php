@@ -78,41 +78,48 @@ foreach($data as $QnA => $arrQnA){            //cerco i subarray domanda-rispost
     <?php
        if(is_array($answer)){                            
         foreach($answer as $subAnswer){
-
-          if(is_array($subAnswer)){                       
-            foreach($subAnswer as $sublist){  
-              
-                if(is_array($sublist)){ 
-
-                    ?>
-                    <ul class="sublist"> 
-                    <?php  
-
-                    foreach($sublist as $sublist_2){
+            
+            if(is_array($subAnswer)){    
+                ?>
+                <ul class="list"> <!--apertura primo ul-->
+                <?php 
+                 
+                foreach($subAnswer as $sublist){  
+                  
+                    if(is_array($sublist)){ 
 
                         ?>
-                          <li> <?php echo $sublist_2 ?> </li>                                         
+                        <ul class="sublist"> <!--apertura secondo ul-->
+                        <?php  
+
+                        foreach($sublist as $sublist_2){
+
+                            ?>
+                            <li> <?php echo $sublist_2 ?> </li>                                         
+                            <?php
+                        }
+
+                        ?> </ul> <?php  //chiusura secondo ul 
+                    }else{
+                        ?>
+                        
+                            <li> <?php echo $sublist?> </li>
+                                
                         <?php
-                    }
-                }else{
-                    ?>
-                        <ul>
-                          <li> <?php echo $sublist?> </li>
-                        </ul>        
-                    <?php
-                }
-
-                    ?> </ul> <?php  //chiusura ul
-            }  
-          }else{
-               ?>
-
-                 <p> <?php echo $subAnswer ?> </p>  
-
+                    }    
+                } 
+                
+                ?> </ul> <?php //chiusura primo ul 
+            }      
+            else{
+                ?>
+                    <p> <?php echo $subAnswer ?> </p>  
                 <?php
             }
+           
+               
         }
-
+       
     }else{
         ?>
 

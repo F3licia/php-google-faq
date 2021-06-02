@@ -1,6 +1,4 @@
-*{
- 
-}
+
 
 h3{ 
     font-family: 'Noto Sans JP', sans-serif;
@@ -13,6 +11,12 @@ p, li, a{
     font-family: roboto;
     font-size: 14px;
     line-height: 24px;
+}
+
+
+.list{
+    list-style-type:decimal;
+  
 }
 
 .sublist{
